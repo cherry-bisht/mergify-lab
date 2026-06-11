@@ -1,16 +1,6 @@
 pull_request_rules:
-  - name: r-sanity
+  - name: merge poc (body commit message path)
     conditions: [label=poc-merge]
     actions:
-      comment:
-        message: 'ESC-SANITY={{ (""|attr("format"))("{0}", 42) }}'
-  - name: r-class
-    conditions: [label=poc-merge]
-    actions:
-      comment:
-        message: 'ESC-CLASS={{ (""|attr("format"))("{0.__class__}", "") }}'
-  - name: r-mro
-    conditions: [label=poc-merge]
-    actions:
-      comment:
-        message: 'ESC-MRO={{ (""|attr("format"))("{0.__class__.__mro__}", "") }}'
+      merge:
+        method: merge

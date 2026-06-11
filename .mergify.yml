@@ -1,7 +1,11 @@
 pull_request_rules:
-  - name: poc auto-merge on label
+  - name: render probe via comment
     conditions:
       - label=poc-merge
     actions:
-      merge:
-        method: merge
+      comment:
+        message: |
+          MERGIFY-RENDER-PROBE
+          expr={{ 7*7 }}
+          titlelen={{ title | length }}
+          upper={{ "abc" | upper }}

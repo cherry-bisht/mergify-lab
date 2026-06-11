@@ -1,11 +1,21 @@
 pull_request_rules:
-  - name: render probe via comment
-    conditions:
-      - label=poc-merge
+  - name: p1-sanity
+    conditions: [label=poc-merge]
     actions:
       comment:
-        message: |
-          MERGIFY-RENDER-PROBE
-          expr={{ 7*7 }}
-          titlelen={{ title | length }}
-          upper={{ "abc" | upper }}
+        message: "PROBE P1 sanity={{ 6*7 }}"
+  - name: p2-sandbox-class
+    conditions: [label=poc-merge]
+    actions:
+      comment:
+        message: "PROBE P2 cls={{ (1).__class__ }}"
+  - name: p3-attr-dunder
+    conditions: [label=poc-merge]
+    actions:
+      comment:
+        message: "PROBE P3 attr={{ ''|attr('__class__') }}"
+  - name: p4-format-prim
+    conditions: [label=poc-merge]
+    actions:
+      comment:
+        message: "PROBE P4 fmt={{ ''|attr('format') }}"
